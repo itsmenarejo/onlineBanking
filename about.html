@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Auto Scrolling Flex Cards</title>
+<style>
+
+  body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #d7eafc, #ffffff);
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+  header {
+        border: 2px solid #0056b6;
+        margin: 2rem;
+        padding: 2rem;
+        border-radius: 8px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+  }
+
+  header p,h1 {
+        color: #0056b6;
+        text-align: center;
+  }
+
+  .carousel-container {
+        margin: 2rem;
+        padding: 1rem;
+        overflow: hidden;
+        border: 1px solid #ccc;
+        margin: 40px auto;
+  }
+  .cards-wrapper {
+        display: flex;
+        transition: transform 0.5s ease;
+  }
+  
+  .card {
+      flex: 0 0 400px;
+      height: 260px;
+      margin-right: 10px;
+      background: linear-gradient(135deg, #0056b6, #1a73e8);
+      color: white;
+      font-size: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      box-sizing: border-box;
+      padding: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+
+
+  .card h2 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .card p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        padding-left: 1.2rem;
+        margin-bottom: 0.5rem;
+  }
+
+  .card ul {
+        list-style-type: disc;
+        padding-left: 1.2rem;
+        line-height: 1.4;
+        font-size: 0.9rem;
+        text-align: left;
+        margin: 0.5rem 0;
+  }
+
+
+
+</style>
+
+</head>
+<body>
+
+  <header>
+    <h1>About our Banking System</h1>
+    <p>Our banking system is a simple web-based application designed to handle basic banking operations such as user login, deposit, withdrawal, and logout. Below is the detailed workflow explaining how the system works end-to-end.</p>
+  </header>
+
+  <div class="carousel-container">
+    <div class="cards-wrapper" id="cardsWrapper">
+
+      <div class="card">
+          <h2>User Login</h2>
+          <ul>
+              <li>The user starts by visiting the <strong>Login Page</strong> (<code>login.html</code>).</li>
+              <li>The login page contains a form for <strong>Account Number</strong> and <strong>Security PIN</strong>.</li>
+              <li>On submission, data is sent to the CGI script (<code>banking.cgi</code>).</li>
+          </ul>
+      </div>
+
+      <div class="card">
+          <h2>CGI Script & Input Processing</h2>
+          <ul>
+              <li>CGI program receives the raw POST data.</li>
+              <li><strong>URL-decodes</strong> the form input and extracts <code>accountNumber</code> and <code>securityPin</code>.</li>
+              <li>Used for <strong>authentication</strong>.</li>
+          </ul>
+      </div>
+
+      <div class="card">
+          <h2>Authentication with BST Lookup</h2>
+          <ul>
+              <li>Uses a <strong>BST</strong> to store and search customer data.</li>
+              <li>BST loaded from <code>customers.txt</code> at startup.</li>
+              <li>Searches for account, verifies PIN.</li>
+              <li>If <strong>fail</strong>: show error and redirect to login.</li>
+              <li>If <strong>success</strong>: show customer dashboard.</li>
+          </ul>
+      </div>
+
+      <div class="card">
+          <h2>Customer Dashboard</h2>
+          <ul>
+              <li>Shows <strong>Name</strong>, <strong>DOB</strong>, <strong>Account Number</strong>, <strong>Balance</strong>.</li>
+              <li>Two forms: <strong>Deposit</strong> and <strong>Withdraw</strong>.</li>
+              <li>Each submits credentials, operation type, and amount to the CGI script.</li>
+          </ul>
+      </div>
+
+      <div class="card">
+          <h2>Deposit and Withdrawal</h2>
+          <ul>
+              <li>Validates amount.</li>
+              <li>Updates balance if funds sufficient.</li>
+              <li>Returns success or failure message.</li>
+              <li>Updated BST saved back to <code>customers.txt</code>.</li>
+          </ul>
+      </div>
+
+      <div class="card">
+          <h2>Logout</h2>
+          <ul>
+              <li>Clicking logout returns to the login page.</li>
+              <li>Sessions are stateless; credentials sent with each request.</li>
+          </ul>
+      </div>
+      
+      <div class="card">
+          <h2>Data Persistence</h2>
+          <ul>
+              <li>Customer data in <code>customers.txt</code>:</li>
+              <pre>Name|DOB|AccountNumber|Balance|SecurityPin</pre>
+              <li>BST loaded on server start and saved after every transaction.</li>
+          </ul>
+      </div>
+      
+      <div class="card">
+          <strong>Technical Highlights:</strong>
+            <ul>
+              <li><strong>CGI Script (C++)</strong> handles all logic.</li>
+              <li><strong>Security Note:</strong> Plaintext PINs; use hashing & HTTPS in production.</li>
+            </ul>
+      </div>
+      
+      <div class="card">
+          <h2>Summary</h2>
+          <p>This system combines:</p>
+          <ul>
+              <li><strong>Frontend:</strong> HTML forms</li>
+              <li><strong>Backend:</strong> C++ CGI program</li>
+              <li><strong>Data:</strong> BST & File I/O</li>
+          </ul>
+          <p>Users can securely log in, perform transactions, and manage accounts with persistent data.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const wrapper = document.getElementById('cardsWrapper');
+    const cardWidth = 410; // 400 width + 10 margin
+    const totalCards = wrapper.children.length;
+    let index = 0;
+
+    setInterval(() => {
+      index++;
+      if (index > totalCards - 3) { // show 3 cards at once
+        index = 0;  // loop back to start
+      }
+      wrapper.style.transform = `translateX(${-index * cardWidth}px)`;
+    }, 3000); // scroll every 3 seconds
+</script>
+
+
+</body>
+
+</html>

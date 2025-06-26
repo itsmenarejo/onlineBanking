@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Banking System Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/icon1.png" type="image/png">
+
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #d7eafc, #ffffff);
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 100vh;
+    }
+
+    .login-container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        text-align: center;
+        padding: 1rem 3rem;
+        box-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+        width: 400px;
+        transition: transform 0.3s ease;
+        animation: fadeIn 0.8s ease;
+    }
+
+    .login-container:hover {
+        box-shadow: 0 0 20px 5px rgba(0, 102, 255, 0.7);
+        transform: translate(0, -10px);
+    }
+
+    .login-container .logo img{
+        width: 150px;
+        height: 150px;
+        object-fit: contain;;
+    }
+
+    .login-container .logo h2, .login-container .logo p {
+        color: #0056b3;
+    }
+
+    .login-container .login input[type="text"],
+    .login-container .login input[type="password"] {
+        width: 100%;
+        padding: 0.7rem;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .login-container .login input[type="submit"] {
+        width: 50%;
+        padding: 0.7rem;
+        background-color: #d7eafc;
+        color: #0056b3;
+        font-weight: bold ;
+        border: 1px solid #0056b3;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
+
+    .login-container .login input[type="text"]:focus,
+    .login-container .login input[type="password"]:focus {
+        border-color: #0056b3;
+        box-shadow: 0 0 5px rgba(0, 102, 255, 0.5);
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+
+    .login-container .login input[type="submit"]:hover {
+        background-color: #0056b3;
+        color: #ffffff;
+        border: 1px solid #0056b3;
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 102, 255, 0.8);
+
+    }
+
+    .credits {
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        color: #666;
+    }
+    .credits a {
+        color: #0056b3;
+        background-color: #d7eafc;
+        text-decoration: none;
+        display: inline-flex;
+        font-weight: bold;
+        border: 1px solid #0056b3;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .credits a:hover {
+        box-shadow: 0 0 5px rgba(0, 102, 255, 0.5);
+        transition: box-shadow 0.3s ease;
+        font-weight: normal;
+        text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+
+</head>
+<body>
+    <div class="login-container">
+        <header>
+            <div class="logo">
+                <img src="images/logo.jpg" alt="Bank Logo" class="logo" width="60">
+                <h2>Online Banking System Login</h2>
+                <p>Access your account securely</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="login">
+                <form action="/cgi-bin/banking.cgi" method="POST">
+                <input type="text" name="accountNumber" placeholder="Account Number" required>
+                <input type="password" name="securityPin" placeholder="Security PIN" required>
+                <input type="submit" value="Login">
+                </form>
+            </div>
+        </main>
+
+        <footer class="credits">
+            <p>&copy; 2024 Online Banking System. All rights reserved.</p>
+            <p><a href="about.html">About us</a>  <a href="https://github.com/itsmenarejo/onlineBanking.git">GitHub</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
