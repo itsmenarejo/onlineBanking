@@ -15,7 +15,7 @@ A simple banking system using DSA (C++).
 ## 🧱 Setup Instructions
 
 ### 1. ✅ Enable CGI in Apache (Linux)
-```bash
+```
 sudo a2enmod cgi
 sudo systemctl restart apache2
 ```
