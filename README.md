@@ -15,10 +15,10 @@ A simple banking system using DSA (C++).
 ## 🧱 Setup Instructions
 
 ### 1. ✅ Enable CGI in Apache (Linux)
-
+```
 sudo a2enmod cgi
 sudo systemctl restart apache2
-
+```
 ### 2. 🛠️ Compile the C++ CGI Script
 Navigate to your project directory and run:
 
