@@ -18,3 +18,8 @@ A simple banking system using DSA (C++).
 sudo a2enmod cgi
 sudo systemctl restart apache2
 
+### 2. **Compile the C++ Script**
+
+g++ banking.cpp -o banking.cgi
+chmod 755 banking.cgi
+
